@@ -9,6 +9,47 @@
   html,body{margin:0;padding:0;background:#FAFAFA;}
   #root{min-height:100vh;}
   *{-webkit-tap-highlight-color:transparent;}
+
+/* --- anti-overflow globale (innocuo su desktop: contenuto ≤1100px centrato) --- */
+html,body{margin:0;}
+#root{overflow-x:hidden;}
+.mm-root{overflow-x:hidden;max-width:100%;}
+
+/* ================= MOBILE / TABLET ≤768px ================= */
+@media (max-width:768px){
+  /* Header compatto, una sola riga; ricerca prominente e fluida */
+  .mm-header{padding:10px 14px !important;gap:10px !important;flex-wrap:nowrap !important;}
+  .mm-logo-img{height:34px !important;}
+  .mm-logo-tag{display:none !important;}
+  .mm-search{flex:1 1 auto !important;min-width:0 !important;max-width:none !important;}
+
+  /* Tab categorie: scroll orizzontale con fade sul bordo destro (indicazione "continua") */
+  .mm-tabs{top:56px !important;-webkit-overflow-scrolling:touch;
+           -webkit-mask-image:linear-gradient(to right,#000 88%,transparent 100%);
+           mask-image:linear-gradient(to right,#000 88%,transparent 100%);}
+
+  /* Lista prodotti: da tabella a CARD impilate */
+  .mm-table{border:none !important;border-radius:0 !important;overflow:visible !important;}
+  .mm-thead{display:none !important;}
+  .mm-prow{flex-direction:column !important;align-items:stretch !important;gap:6px !important;
+           padding:14px !important;background:#fff !important;border:1px solid #E2E8F0 !important;
+           border-radius:12px !important;margin-bottom:10px !important;min-height:44px;}
+  .mm-prow > span{min-width:0 !important;width:auto !important;}
+  .mm-prow > span:nth-child(1){font-size:12.5px !important;font-weight:600 !important;}
+  .mm-prow > span:nth-child(2){font-size:14px !important;font-weight:600 !important;
+                               white-space:normal !important;color:#0F1B2D !important;line-height:1.35 !important;}
+  .mm-prow > span:nth-child(3){font-size:12px !important;color:#5A6B80 !important;}
+  .mm-prow > span:last-child{justify-content:flex-start !important;flex-wrap:wrap !important;}
+
+  /* Risultati ricerca: consentono il wrap, niente troncamenti */
+  .mm-srow{flex-wrap:wrap !important;}
+  .mm-srow > span{min-width:0 !important;}
+
+  /* CTA dettaglio (scheda/preventivo): full-width, touch target ≥44px */
+  .mm-cta{flex-direction:column !important;}
+  .mm-cta > button{width:100% !important;justify-content:center !important;padding:15px 20px !important;min-height:48px !important;}
+}
+
 </style>
 </head>
 <body>
